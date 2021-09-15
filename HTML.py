@@ -3,8 +3,14 @@ import requests
 import os
 from bs4 import BeautifulSoup
 
-#fetch URL
-URL = "https://www.mbda-systems.com/"
+def enter_arg():
+	parser = argparse.ArgumentParser(decription='Enter the website you would like to scrape')
+	parser.add_argument("--site", default=0, type=str, help='Type in the site:')
+	args = parser.parse_args()
+	return args
+
+#Request URL from user & fetch URL
+URL = input("Enter a URL to scrape:")
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
